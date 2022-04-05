@@ -49,7 +49,7 @@ void qh_fprintf(qhT *qh, FILE *fp, int msgcode, const char *fmt, ... ) {
   if (!fp) {
     if(!qh){
       qh_fprintf_stderr(6241, "qhull internal error (userprintf_r.c): fp and qh not defined for qh_fprintf '%s'\n", fmt);
-      qh->last_errcode= 6241;
+      //qh->last_errcode= 6241;
       qh_exit(qh_ERRqhull);  /* can not use qh_errexit() */
     }
     /* could use qh->qhmem.ferr, but probably better to be cautious */
