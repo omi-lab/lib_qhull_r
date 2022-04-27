@@ -2904,7 +2904,7 @@ void qh_mergecycle_all(qhT *qh, facetT *facetlist, boolT *wasmerge) {
   facetT *facet, *same, *prev, *horizon, *newfacet;
   facetT *samecycle= NULL, *nextfacet, *nextsame;
   vertexT *apex, *vertex, **vertexp;
-  int cycles=0, total=0, facets, nummerge, numdegen= 0;
+  int cycles=0, facets, nummerge, numdegen= 0;
 
   trace2((qh, qh->ferr, 2031, "qh_mergecycle_all: merge new facets into coplanar horizon facets.  Bulk merge a cycle of facets with the same horizon facet\n"));
   for (facet=facetlist; facet && (nextfacet= facet->next); facet= nextfacet) {
@@ -2955,7 +2955,6 @@ void qh_mergecycle_all(qhT *qh, facetT *facetlist, boolT *wasmerge) {
       else
         horizon->nummerge= (short unsigned int)nummerge; /* limited to 9 bits by qh_MAXnummerge, -Wconversion */
       zzinc_(Zcyclehorizon);
-      total += facets;
       zzadd_(Zcyclefacettot, facets);
       zmax_(Zcyclefacetmax, facets);
     }
