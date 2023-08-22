@@ -100,7 +100,7 @@ void qh_check_bestdist(qhT *qh) {
   facetT *facetlist;
   realT dist, maxoutside, maxdist= -REALmax;
   pointT *point;
-  int numpart= 0, facet_i, facet_n, notgood= 0, notverified= 0;
+  int numpart= 0, facet_i, facet_n, notverified= 0;
   setT *facets;
 
   trace1((qh, qh->ferr, 1020, "qh_check_bestdist: check points below nearest facet.  Facet_list f%d\n",
@@ -134,7 +134,9 @@ below %2.2g of the nearest %sfacet.\n",
       if (qh->ONLYgood && !bestfacet->good
       && !((bestfacet= qh_findgooddist(qh, point, bestfacet, &dist, &facetlist))
       && dist > maxoutside))
-        notgood++;
+      {
+
+      }
       else {
         waserror= True;
         qh_fprintf(qh, qh->ferr, 6109, "qhull precision error (qh_check_bestdist): point p%d is outside facet f%d, distance= %6.8g maxoutside= %6.8g\n",
